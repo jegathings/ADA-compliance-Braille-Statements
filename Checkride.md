@@ -1,6 +1,15 @@
 # ADA Compliance-Braille System
 Define an event streaming system that ultimately prints messages.
 
+From the **Problem Statement**, aka README.md.
+```
+PCOE provides printing services that print statements, notices, and marketing materials. They have the capability to print regular non-Braille letters in house (with full control of the printing software) and now Braille which is done by an external vendor (through a REST interface), required by ADA.
+```
+
+Problem solution:
+```
+This solution will model the printing services as events.  The following events have been identified based on the above statement:
+```
 ### Print Stream Events
 + Statement
 + Notice
@@ -12,6 +21,9 @@ Define an event streaming system that ultimately prints messages.
   + External vendor via RESTful services
   + This is required by ADA
 
+```
+The previously defined events will be handled by individual producers.
+```
 ### Defined Producers
 + Statement Producer
 + Notice Producer
@@ -19,6 +31,9 @@ Define an event streaming system that ultimately prints messages.
 + Non Braile Producer
 + Braile Producer
 
+```
+The previously defined events will perform SQL operations to create a payload.  SQL can be used to gather stateful information such as the type of statement (Marketing, Braile, Non Braile, etc).  SQL can also have templated statements (Marketing, Braile, Non Braile) and the producer can create a dynamic message based off the SQL results.
+```
 ### Producer Tables
 + Statement Table
   + Joins with Customer
@@ -30,7 +45,8 @@ Define an event streaming system that ultimately prints messages.
   + Joins with Customer
 + Braile Table
   + Joins with Customer
-
++ Statement Template
+  + The templates are parameratized and the paramerters can be substited by the producer.
 ### Statement Producer
 ```
 Statement Producer will use a SQL inner join statement between the customer and statement tables.  Next, the producer will take the SQL results and produce events to the broker.  The event key will be "statement".  The event value will be the statement payload.
