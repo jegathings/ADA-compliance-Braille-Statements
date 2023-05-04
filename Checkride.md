@@ -4,8 +4,8 @@ Define an event streaming system that ultimately prints messages.
 From the **Problem Statement**, aka README.md.
 ```
 PCOE provides printing services that print statements, notices, and marketing materials. They have the
- capability to print regular non-Braille letters in house (with full control of the printing software)
- and now Braille which is done by an external vendor (through a REST interface), required by ADA.
+capability to print regular non-Braille letters in house (with full control of the printing software)
+and now Braille which is done by an external vendor (through a REST interface), required by ADA.
 ```
 
 Problem solution:
